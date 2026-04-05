@@ -61,8 +61,10 @@ Modern Portföy Teorisi uygulanarak Sharpe Ratio maksimizasyonu ile optimal port
 
 ## Değerlendirme
 
-Model %25 GLD önerse de 2025-2026 döneminde altının savaş ortamında dahi düşmesi ve fiyat hareketlerinde merkez bankası alımlarının belirleyici rol oynaması, altının klasik güvenli liman özelliğini her koşulda taşımadığını düşündürtüyor. Bu nedenle %25 oranını fazla buluyorum.
+Model %25 GLD önerse de 2025-2026 döneminde altının savaş ortamında dahi düşmesi ve fiyat hareketlerinde merkez bankası alımlarının belirleyici rol oynaması, altının klasik güvenli liman özelliğini her koşulda taşımadığını düşündürtüyor. Fiyat hareketlerinde merkez bankası alımlarının etkili olduğu göz önünde bulundurulduğunda, %25 GLD oranı portföy riski açısından yüksek olarak değerlendirilebilir.
 
 ABD Başkanı Trump'ın yeni FED başkanının faizleri indirmesini talep etmesi ve savaş sonrası normalleşme döneminde faiz indirim beklentilerinin güçlenebileceği göz önünde bulundurulduğunda, modelin portföye eklemediği TLT'nin 2026 ortasından itibaren değer kazanabileceği düşünülmektedir.
 
-Modelin sektör çeşitliliğinin az olması ve portföyün %75'ini 3 varlığa dağıtması, yeterince iyi bir diversifikasyon oluşturmanın önüne geçiyor.
+Varlık kümesinde hem TLT hem BND test edilmiş olsa da her ikisi de optimizer tarafından seçilmemiştir. Bu durum, analiz dönemindeki faiz artış ortamının tahvil getirilerini olumsuz etkilemesinden kaynaklanıyor olabilir.
+
+Model yalnızca geçmiş fiyat hareketlerine dayandığından makroekonomik değişkenleri, jeopolitik riskleri ve irrasyonel piyasa davranışlarını göz ardı etmektedir. Buna ek olarak, sunulan varlık kümesi sektör çeşitliliği açısından sınırlı kalmıştır. Daha geniş ve çeşitliliği yüksek bir varlık kümesi ve makro faktörlerin modele dahil edilmesi, daha dengeli bir portföy dağılımı üretebilir.
