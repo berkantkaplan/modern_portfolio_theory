@@ -1,13 +1,68 @@
-# modern_portfolio_theory
+# Markowitz Portföy Optimizasyonu
 
-1- Modern Portföy Teorisinin uygulanarak ideal portföyün oluşturulması konusunda temel bir uygulama. 2020 itibari ile yfinance'den çekilen verilerin logaritmik getirileri hesaplanmış, ardından Ledoit-Wolf metodu ile varlıkların kovaryans matrisi bulunmuştur.
+Modern Portföy Teorisi uygulanarak Sharpe Ratio maksimizasyonu ile optimal portföy oluşturulması üzerine temel bir uygulama. 2020 itibarıyla yfinance'den çekilen verilerin logaritmik getirileri hesaplanmış, ardından **Ledoit-Wolf metodu** ile varlıkların kovaryans matrisi bulunmuştur.
 
-2- AAPL,TSLA,AMZN,MSFT,GOOGL, gibi dev teknoloji şirketlerinin yanısıra, WMT ve NKE gibi perakende şirketleri eklenmiştir. Enerji sektöründen BE, 2025 te yükseliş yapan PLTR ve bunlara ek olarak LITE bulunmaktadır. Bunların yanısıra, Bitcoin rezerve şirketi MSTR, ons altın(GLD), ve abd tahvilleri (TLT) dahil edilmiştir.
+---
 
-3-Scipy SLSQP Optimizer'ı ile Sharpe Ratio maksimizasyonu yapıldı. Optimizer'ın üst sınırı, tek bir hissede yoğunlaşılmaması için .25 olarak belirlendi. Buna rağmen optimizer AMZN,WMT ve GLD 'un herbirine .25 oranında portföy ağırlığı belirledi ve toplam portföy değerinin .75 i bu 3 varlıktan oluşturdu. Geri kalan .25 'lik oranı, .148 MSTR ve .102 LITE ile oluşturdu.
+## Varlık Evreni
 
-4-2020-10-02 ve 2026-04-02 tarihleri arasındaki backtestte yıllık getiri dolar bazında 27.92% çıkmıştır. Zirveden gerçekleşen en yüksek düşüş -34.38% ile gerçekleşmiş olup, portföy'ün betası 0.90 ve alphası 0.15 tir. Optimizer'ın belirlediği varlık dağılımları ile 2020-10-02 tarihinde bir portföy oluştursaydık, spy'den daha az volatil bir portföy ile senelik 27.4% oranında getiri sağlayabilirdik. Ancak, bu süreç içerisinde 2021-11-05 tarihinde zirveye ulaşan portföyün değeri, 2022-12-28 tarihinden itibaren -34.38% oranında düşmüş olup, 2024-05-16 tarihine kadar zirvenin altında kalmış olacaktı. Portföy, 2021'in yaklaşık ilk çeyreğinin sonuna kadar spy den daha iyi getiri, ve 2021 1.çeyreğinden, 2024 yaklaşık 4.çeyrek başına kadar spy den daha kötü bir performans sergilemiş olacaktı. varlık seçimlerinden olsa gerek ki, portföy 2025 yaklaşık 1.çeyrek sonundan günümüze kadar spy nin epey üzerinde bir getiri sağlamış olacaktı. Sonuç olarak, 2020-10-02 tarihinde oluşturulan bu portföy, psikolojik anlamda taşıması çok zor olmak ile beraber,  uzunca bir süre spy den daha kötü getiri sağlamış, ancak 2025 başından itibaren SPY'yi belirgin şekilde geride bırakmış olacaktı. Bu da portföyün performansının büyük ölçüde varlık seçimine ve piyasa koşullarına bağlı olduğunu göstermektedir.
+| Sektör | Varlıklar |
+|--------|-----------|
+| Teknoloji | AAPL, TSLA, AMZN, MSFT, GOOGL |
+| Perakende | WMT, NKE |
+| Enerji | BE |
+| Büyüme | PLTR, LITE |
+| Kripto Proxy | MSTR |
+| Emtia | GLD (Ons Altın) |
+| Tahvil | TLT (ABD Tahvili) |
 
-5-Model %25 GLD önerse de 2025-2026 döneminde altının savaş ortamında dahi düşmesi ve fiyat hareketlerinde merkez bankası alımlarının belirleyici rol oynaması altının klasik güvenli liman özelliğini her koşulda taşımadığını düşündürtüyor. Bu nedenle %25 oranını fazla buluyorum. ABD Başkanı Trump'ın yeni FED başkanının faizleri indirmesini istediğini defalarca kez söylemesi ve savaşın yaşanmamış olduğu durumda yeni FED başkanının faizleri düşüreceği piyasa tarafından bekleniyordu. Yeni FED başkanının göreve gelmesi ve savaş sonrası normalleşme döneminde faiz indirim beklentileri güçlenebilir. Dolayısıyla, modelin portföye eklemediği ABD tahvillerinin bu senenin ortasından itibaren değer kazanabilir. Modelin seçimlerine göre sektör çeşitliliğinin az olması ve portföyün %75'ini 3 adet varlığa dağıtması, yeterince iyi bir portföy dağılımı oluşturmanın önüne geçiyor.
+---
 
-6-Optimizer'ın belirlediği ağırlıklara sahip portföyün 1000 senaryo ile yapılan Monte Carlo simülasyonu, 252 günlük periyotta ortalama %35 getiri, %8.3 kayıp olasılığı ve en kötü %5'lik senaryoda %5 kayıp öngörmektedir.
+## Optimizasyon
+
+**Scipy SLSQP** optimizer'ı ile Sharpe Ratio maksimizasyonu yapıldı. Tek bir varlıkta yoğunlaşmayı önlemek için üst sınır **%25** olarak belirlendi.
+
+| Varlık | Ağırlık |
+|--------|---------|
+| AMZN | %25.0 |
+| WMT | %25.0 |
+| GLD | %25.0 |
+| MSTR | %14.8 |
+| LITE | %10.2 |
+
+> Üst sınır %25 olmasına rağmen optimizer, AMZN, WMT ve GLD'ye maksimum ağırlığı verdi. Portföyün %75'i bu 3 varlıktan oluştu.
+
+---
+
+## Backtest (2020-10-02 / 2026-04-02)
+
+| Metrik | Değer |
+|--------|-------|
+| Yıllık Getiri | %27.92 |
+| Max Drawdown | -%34.38 |
+| Beta | 0.90 |
+| Alpha | 0.15 |
+| Sharpe Ratio | 1.34 |
+
+2020-10-02 tarihinde oluşturulan bu portföy, SPY'den daha az volatil olmakla birlikte 2021 ilk çeyreğinden 2024 dördüncü çeyreğine kadar SPY'nin altında kaldı. 2021-11-05'te zirveye ulaşan portföy -%34.38 düşerek 2024-05-16'ya kadar toparlanamadı. 2025 başından itibarense SPY'yi belirgin şekilde geride bıraktı. Bu da portföy performansının büyük ölçüde varlık seçimine ve piyasa koşullarına bağlı olduğunu göstermektedir.
+
+---
+
+## Monte Carlo Simülasyonu (1000 Senaryo, 252 Gün)
+
+| Metrik | Değer |
+|--------|-------|
+| Ortalama Getiri | %35 |
+| En İyi %5 Senaryo | %82 |
+| En Kötü %5 Senaryo | -%5 |
+| Kayıp Olasılığı | %8.3 |
+
+---
+
+## Değerlendirme
+
+Model %25 GLD önerse de 2025-2026 döneminde altının savaş ortamında dahi düşmesi ve fiyat hareketlerinde merkez bankası alımlarının belirleyici rol oynaması, altının klasik güvenli liman özelliğini her koşulda taşımadığını düşündürtüyor. Bu nedenle %25 oranını fazla buluyorum.
+
+ABD Başkanı Trump'ın yeni FED başkanının faizleri indirmesini talep etmesi ve savaş sonrası normalleşme döneminde faiz indirim beklentilerinin güçlenebileceği göz önünde bulundurulduğunda, modelin portföye eklemediği TLT'nin 2026 ortasından itibaren değer kazanabileceği düşünülmektedir.
+
+Modelin sektör çeşitliliğinin az olması ve portföyün %75'ini 3 varlığa dağıtması, yeterince iyi bir diversifikasyon oluşturmanın önüne geçiyor.
