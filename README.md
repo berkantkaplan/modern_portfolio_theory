@@ -12,7 +12,7 @@ Modern Portföy Teorisi uygulanarak Sharpe Ratio maksimizasyonu ile optimal port
 | Perakende | WMT, NKE |
 | Enerji | BE |
 | Büyüme | PLTR, LITE |
-| Kripto Proxy | MSTR |
+| Bitcoin | MSTR |
 | Emtia | GLD (Ons Altın) |
 | Tahvil | TLT (ABD Tahvili) |
 
@@ -44,7 +44,7 @@ Modern Portföy Teorisi uygulanarak Sharpe Ratio maksimizasyonu ile optimal port
 | Alpha | 0.15 |
 | Sharpe Ratio | 1.34 |
 
-2020-10-02 tarihinde oluşturulan bu portföy, SPY'den daha az volatil olmakla birlikte 2021 ilk çeyreğinden 2024 dördüncü çeyreğine kadar SPY'nin altında kaldı. 2021-11-05'te zirveye ulaşan portföy -%34.38 düşerek 2024-05-16'ya kadar toparlanamadı. 2025 başından itibarense SPY'yi belirgin şekilde geride bıraktı. Bu da portföy performansının büyük ölçüde varlık seçimine ve piyasa koşullarına bağlı olduğunu göstermektedir.
+2020-10-02 tarihinde oluşturulan bu portföy, SPY'den daha az volatil olmakla birlikte 2021 ilk çeyreğinden 2024 dördüncü çeyreğine kadar SPY'nin altında kalmış. 2021-11-05'te zirveye ulaşan portföyün -%34.38 düşerek 2024-05-16'ya kadar toparlanamamış olması psikolojik açıdan taşıması zor bir portföy olduğu yorumu yapılabilir. Son olarak, 2025 başından itibarense SPY'yi belirgin şekilde geride bırakıyor. Bu da portföy performansının büyük ölçüde varlık seçimine ve piyasa koşullarına bağlı olduğunu gösteriyor.
 
 ---
 
